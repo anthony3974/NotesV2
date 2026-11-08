@@ -11,11 +11,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
@@ -109,11 +107,8 @@ fun MainPage(vm: NotesViewModel = viewModel()) {
                     titleContentColor = Color.White,
                 ),
                 actions = {
-                    // Sideways there isn't much height, so Add moves up into the title bar
-                    if (landscape) {
-                        TextButton(onClick = { vm.add() }) {
-                            Text("Add", color = Color.White, fontSize = 16.sp)
-                        }
+                    TextButton(onClick = { vm.add() }) {
+                        Text("Add", color = Color.White, fontSize = 16.sp)
                     }
                 },
             )
@@ -138,11 +133,6 @@ fun MainPage(vm: NotesViewModel = viewModel()) {
                     NoteList(vm.notes.drop(NOTES_PER_SIDE), vm, onDelete, Modifier.weight(1f), spacing = 0.dp)
                 }
             } else {
-                // Same width as the original Add button (12 of 52 parts)
-                Row(Modifier.fillMaxWidth()) {
-                    MauiButton("Add", Modifier.weight(12f)) { vm.add() }
-                    Spacer(Modifier.weight(40f))
-                }
                 NoteList(vm.notes, vm, onDelete, Modifier.weight(1f))
             }
         }
