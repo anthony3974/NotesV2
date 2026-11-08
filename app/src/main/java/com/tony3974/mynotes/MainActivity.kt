@@ -47,6 +47,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -102,7 +103,7 @@ fun MainPage(vm: NotesViewModel = viewModel()) {
         contentWindowInsets = WindowInsets.safeDrawing, // keeps notes above the keyboard and clear of notches
         topBar = {
             TopAppBar(
-                title = { Text("Notes") },
+                title = { Text(stringResource(R.string.app_name)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MauiPrimary,
                     titleContentColor = Color.White,
